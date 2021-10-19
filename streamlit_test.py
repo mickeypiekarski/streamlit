@@ -13,9 +13,9 @@ st.write("lets see if my code works yala")
 
 
 
-day_signals = pd.read_csv("/content/ada_signals_day.csv")
-hour_signals = pd.read_csv("/content/ada_signals_hour.csv")
-usd = pd.read_csv("/content/ADA-USD.csv")
+day_signals = pd.read_csv("ada_signals_day.csv")
+hour_signals = pd.read_csv("ada_signals_hour.csv")
+usd = pd.read_csv("ADA-USD.csv")
 price_volume = usd[['Adj Close', 'Volume', 'Date']].rename(columns={"Adj Close" : "Price"})
 
 # Create x-axis (time series):
