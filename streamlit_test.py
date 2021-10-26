@@ -46,16 +46,25 @@ ADA_data = pd.read_csv("ADA-USD.csv")
 
 
 option = st.selectbox(\
-    'Which coin would you like to view', ["ADA","BTC","ETH"])
+    'Which coin would you like to view', ['Aave','BinanceCoin','Bitcoin','Cardano','ChainLink','Cosmos','DogeCoin','EOS'])
 
 'You selected: ', option
 
+
+coin = option
+trial = 'coins/coin_'+coin+'.csv'
+df = pd.read_csv(trial)
+df = df.tail(365)
+
 # EXPERIMENTING (alternative representation of price per currency)
 #Create a selection that chooses the nearest point & selects based on x-value
+
+
 nearest = alt.selection(type='single', nearest=True, on='mouseover',
                         fields=['date_MDY'], empty='none')
 
-# The basic line
+
+
 line = alt.Chart().mark_line(interpolate='basis').encode(
     alt.X('Date:T', axis=alt.Axis(title='Date')),
     alt.Y('Close:Q', axis=alt.Axis(title='Price (in USD)',format='$f')),
@@ -88,10 +97,7 @@ rules = alt.Chart().mark_rule(color='gray').encode(
     nearest
 )
 
-# Put the five layers into a chart and bind the data
 chart = alt.layer(line, selectors, points, rules, text,
-                       data=ADA_data,
-                       width=800, height=400,title='Cryptocurrency Price History')
-
-
+                       data=df,
+                       width=800, height=400,title= coin +' Price History')
 chart
