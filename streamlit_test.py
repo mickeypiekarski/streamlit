@@ -46,7 +46,7 @@ ADA_data = pd.read_csv("ADA-USD.csv")
 
 
 option = st.selectbox(\
-    'Which coin do you like best?', ["ADA","BTC","ETH"])
+    'Which coin would you like to view', ["ADA","BTC","ETH"])
 
 'You selected: ', option
 
