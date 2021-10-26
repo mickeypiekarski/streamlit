@@ -50,11 +50,15 @@ option = st.selectbox(\
 
 'You selected: ', option
 
+option1 = st.selectbox(\
+    'Date range (years)', [0.5,1,2,3,4,5])
+'You selected: ', option1
+
 
 coin = option
 trial = 'coins/coin_'+coin+'.csv'
 df = pd.read_csv(trial)
-df = df.tail(365)
+df = df.tail(int(364 * option1))
 
 # EXPERIMENTING (alternative representation of price per currency)
 #Create a selection that chooses the nearest point & selects based on x-value
