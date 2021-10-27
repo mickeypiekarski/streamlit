@@ -5,6 +5,7 @@ from datetime import datetime
 import numpy as np
 import altair as alt
 import streamlit.components.v1 as components
+from PIL import Image
 
 
 #testing to bring in the data
@@ -14,8 +15,12 @@ day_signals = pd.read_csv("ada_signals_day.csv")
 hour_signals = pd.read_csv("ada_signals_hour.csv")
 usd = pd.read_csv("ADA-USD.csv")
 day_signals = pd.read_csv("data_for_viz_project.csv")
+img = Image.open("cryptoreview_logo.jpg")
 
 
+st.sidebar.image(img, use_column_width=True)
+
+st.sidebar.write("Send us some [feedback](https://docs.google.com/forms/d/e/1FAIpQLSeW1-wPirsWOBxF8VSJUxIGd1bM9BnT55cX5EXK6atmzAO3Hw/viewform?usp=sf_link)!")
 
 def main():
     html_temp = """<div class='tableauPlaceholder' id='viz1635264266252' style='position: relative'><noscript><a href='#'><img alt='2021 Daily Average Proportion of Market Value Per Crypto ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W209TableauPrototypeViz1_16352217853570&#47;donut&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='W209TableauPrototypeViz1_16352217853570&#47;donut' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W209TableauPrototypeViz1_16352217853570&#47;donut&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1635264266252');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>"""
@@ -33,8 +38,6 @@ def main():
 
     components.html(html_temp, height = 600)
 
-if __name__ == "__main__":
-    main()
 
 
 import streamlit as st
@@ -105,3 +108,7 @@ chart = alt.layer(line, selectors, points, rules, text,
                        data=df,
                        width=800, height=400,title= coin +' Price History')
 chart
+
+
+if __name__ == "__main__":
+    main()
